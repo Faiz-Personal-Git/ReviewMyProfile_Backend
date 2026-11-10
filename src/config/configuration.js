@@ -3,15 +3,13 @@ import {resolveEnv} from '../utils/utility.js'
 import dotenv from "dotenv";
 
 
-const result = dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+    const result = dotenv.config();
 
-if (result.error) {
-    console.error("Error loading .env:", result.error);
-} else {
-    console.log("Environment variables loaded successfully");
+    if (result.error && result.error.code !== "ENOENT") {
+        throw result.error;
+    }
 }
-
-console.log(process.env.PORT)
 
 export const configuration = Object.freeze({
     port: Number(resolveEnv("PORT")),
