@@ -1,5 +1,16 @@
 import {resolveEnv} from '../utils/utility.js'
 
+import dotenv from "dotenv";
+
+
+const result = dotenv.config();
+
+if (result.error) {
+    console.error("Error loading .env:", result.error);
+} else {
+    console.log("Environment variables loaded successfully");
+}
+
 console.log(process.env.PORT)
 
 export const configuration = Object.freeze({

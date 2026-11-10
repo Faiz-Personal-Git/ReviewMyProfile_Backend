@@ -3,6 +3,8 @@ import app from "./src/app.js";
 import connectDB from "./src/config/database.js";
 import { configuration } from "./src/config/configuration.js";
 
+
+
 const PORT = configuration.port || 5000;
 
 const startServer = async () => {
